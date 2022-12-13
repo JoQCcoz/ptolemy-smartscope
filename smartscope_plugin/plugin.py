@@ -1,6 +1,6 @@
-from Smartscope.lib.Datatypes.base_plugin import Finder, TargetClass
+from Smartscope.lib.Datatypes.base_plugin import Finder
 from Smartscope.lib.montage import create_targets_from_center, Target
-from typing import Optional, Dict, Any, List, Union, Tuple
+from typing import Optional, Dict, Any, List, Tuple
 from pathlib import Path
 import numpy as np
 
