@@ -3,6 +3,7 @@ from Smartscope.lib.montage import create_targets_from_center, Target
 from typing import Optional, Dict, Any, List, Tuple
 from pathlib import Path
 import numpy as np
+from .wrapper import ptolemy_find_holes 
 
 
 class PtolemyHoleFinder(Finder):
@@ -16,7 +17,7 @@ class PtolemyHoleFinder(Finder):
 
     def run(self, montage, create_targets_method=create_targets_from_center)-> Tuple[List[Target], bool, Dict]:
         """Where the main logic for the algorithm is"""
-        from .wrapper import ptolemy_find_holes         
+        
         exposure = ptolemy_find_holes(montage, **self.kwargs)
         ptolemy_image_coords = np.array([exposure.crops.center_coords.y*exposure.scale,exposure.crops.center_coords.x*exposure.scale],dtype=int).transpose()
         targets = create_targets_method(ptolemy_image_coords,montage)
