@@ -1,0 +1,35 @@
+name: SPA-Ptolemy
+atlas:
+  acquisition:
+      - setAtlasOptics 
+      - atlas
+  targets:
+    finders:
+      - AI square finder
+    selectors:
+      - Size selector
+square:
+  acquisition:
+    - moveStage
+    - realignToSquare
+    - eucentricSearch
+    - createHoleRefPtolemy
+    - square
+  targets:
+    finders:
+      - AI hole finder
+      - Regular pattern
+    selectors:
+      - Graylevel selector
+mediumMag:
+  acquisition:
+    - moveStage
+    - createHoleRefPtolemy
+    - alignToHoleRef
+    - mediumMagHole
+  targets:
+    finders:
+      - Ptolemy hole finder
+highMag:
+  acquisition:
+    - highMag
