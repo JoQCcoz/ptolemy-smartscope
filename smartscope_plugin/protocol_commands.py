@@ -40,6 +40,8 @@ def createHoleRefPtolemy(scope,params,instance):
         stack = np.concatenate((stack,crop),axis=2)
     average = np.mean(stack,axis=2).astype(image.dtype)
     scope.numpy_to_buffer(average)
+    scope.hole_crop_size = average.shape[0]
+    scope.has_hole_ref = True
 
 
 
