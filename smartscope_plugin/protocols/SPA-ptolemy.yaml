@@ -23,6 +23,7 @@ square:
       - Graylevel selector
 mediumMag:
   acquisition:
+    - tiltToAngle
     - moveStage
     - createHoleRefPtolemy
     - alignToHoleRef
