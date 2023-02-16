@@ -1,10 +1,14 @@
-from Smartscope.lib.Datatypes.base_plugin import Finder
-from Smartscope.lib.montage import create_targets_from_center, Target
+
 from typing import Optional, Dict, Any, List, Tuple
 from pathlib import Path
 import numpy as np
-from .wrapper import ptolemy_find_holes , load_model
 import torch
+import os
+
+from Smartscope.lib.Datatypes.base_plugin import Finder
+from Smartscope.lib.montage import create_targets_from_center, Target
+
+from .wrapper import ptolemy_find_holes , load_model
 
 
 class PtolemyHoleFinder(Finder):
@@ -13,7 +17,7 @@ class PtolemyHoleFinder(Finder):
     reference: str = 'https://arxiv.org/abs/2112.01534'
     kwargs: Optional[Dict[str, Any]] = { 
         'model_path': Path(__file__).resolve().parents[1] / 'weights/211026_unet_9x64_ep6.torchmodel',
-        'cuda': torch.cuda.is_available(),
+        'cuda': False if eval(os.getenv('FORCE_CPU')) else torch.cuda.is_available() ,
         'preload_weights': True,
         'height': 1024,
     }
