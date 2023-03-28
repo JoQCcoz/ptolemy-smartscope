@@ -1,4 +1,4 @@
-name: SPA-Ptolemy
+name: SPA-Ptolemy-precise
 atlas:
   acquisition:
       - setAtlasOptics 
@@ -12,7 +12,7 @@ square:
   acquisition:
     - moveStage
     - realignToSquare
-    - eucentricSearch
+    - eucentricMediumMag
     - createHoleRefPtolemy
     - square
   targets:
@@ -24,7 +24,6 @@ square:
 mediumMag:
   acquisition:
     - setFocusPosition
-    - tiltToAngle
     - moveStage
     - createHoleRefPtolemy
     - alignToHoleRef
