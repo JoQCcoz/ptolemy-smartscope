@@ -29,7 +29,7 @@ def createHoleRefPtolemy(scope,params,instance):
     print(f'Found {len(coords)} holes, pixel_size= {pixel_size}')
     stack = None
     for coord in coords:
-        crop, _, _, _, overLimits = extract_from_image(image,coord,pixel_size*10,box_size=2)
+        crop, _, _, _, overLimits = extract_from_image(image,coord,pixel_size*10,box_size=instance.grid_id.holeType.hole_size*1.3)
         crop = crop.reshape((crop.shape + (1,)))
         print(f'Crop {crop.shape} is overlimits: {overLimits}. Stack created: {stack is not None}')
         if overLimits:
