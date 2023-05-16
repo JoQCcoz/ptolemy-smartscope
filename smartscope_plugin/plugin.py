@@ -8,6 +8,7 @@ import os
 from Smartscope.lib.Datatypes.base_plugin import Finder
 from Smartscope.lib.montage import create_targets_from_center, Target
 
+from ptolemy.algorithms import BadMedMagError
 from .wrapper import ptolemy_find_holes , load_model
 
 
@@ -32,6 +33,12 @@ class PtolemyHoleFinder(Finder):
         if self.kwargs['preload_weights'] and self.segmenter is None:
             print('loading model on first use')
             self.segmenter = load_model(self.kwargs['model_path'], self.kwargs['cuda'])
-        ptolemy_image_coords, additional_outputs = self.find_holes(montage.image)
-        targets = create_targets_method(ptolemy_image_coords,montage)
-        return targets, True, additional_outputs
+        try:
+            ptolemy_image_coords, additional_outputs = self.find_holes(montage.image)
+            targets = create_targets_method(ptolemy_image_coords,montage)
+            success = True
+        except BadMedMagError as err:
+            print(f'Could not find holes. {err}')
+            targets = []
+            success = False
+        return targets, success, additional_outputs
