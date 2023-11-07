@@ -2,10 +2,11 @@ from .plugin import PtolemyHoleFinder
 from Smartscope.lib.image_manipulations import extract_from_image
 import numpy as np
 import logging
+from typing import Dict
 
 logger = logging.getLogger(__name__)
 
-def alignToHolePtolemy(scope,params,instance):
+def alignToHolePtolemy(scope,params,instance, content:Dict, *args, **kwargs):
     from Smartscope.core.db_manipulations import set_or_update_refined_finder
     while True:
         scope.acquire_medium_mag()
@@ -20,7 +21,7 @@ def alignToHolePtolemy(scope,params,instance):
             break
         scope.align_to_coord(*coords[closest_index])
 
-def createHoleRefPtolemy(scope,params,instance):
+def createHoleRefPtolemy(scope,params,instance, content:Dict, *args, **kwargs):
     if scope.has_hole_ref:
         return
     scope.acquire_medium_mag()
