@@ -23,7 +23,7 @@ def alignToHolePtolemy(scope,params,instance, content:Dict, *args, **kwargs):
         if dist_to_center[closest_index] * pixel_size / 1_000 < 0.8:
             set_or_update_refined_finder(instance.pk,*scope.report_stage())
             break
-        scope.align_to_coord(coords[closest_index])
+        scope.align_to_coord(coords_from_center[closest_index])
 
 def createHoleRefPtolemy(scope,params,instance, content:Dict, *args, **kwargs):
     """Uses Ptolemy on a view mag image, finds the holes, extracts and average them into a hole reference. The resulting reference will be copied in buffer T."""
