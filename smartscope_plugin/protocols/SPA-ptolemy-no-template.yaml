@@ -1,0 +1,40 @@
+name: SPA-Ptolemy-no-template
+description: This protocol will use ptolemy to the holes instead of a template. This slows down the process but is usually more precise. 
+atlas:
+  acquisition:
+      - setAtlasOptics
+      - resetStage
+      - removeSlit
+      - eucentricSearch
+      - atlas
+  targets:
+    finders:
+      - AI square finder
+    selectors:
+      - Size selector
+square:
+  acquisition:
+    - moveStageWithAtlasToSearchOffset
+    - realignToSquare
+    - eucentricMediumMag
+    # - createHoleRefPtolemy
+    - square
+  targets:
+    finders:
+      - AI hole finder
+      - Regular pattern
+    selectors:
+      - Graylevel selector
+mediumMag:
+  acquisition:
+    - setFocusPosition
+    - moveStage
+    # - createHoleRefPtolemy
+    - alignToHolePtolemy
+    - mediumMagHole
+  targets:
+    finders:
+      - Ptolemy hole finder
+highMag:
+  acquisition:
+    - highMag
