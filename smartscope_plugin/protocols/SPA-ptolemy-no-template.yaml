@@ -5,7 +5,7 @@ atlas:
       - setAtlasOptics
       - resetStage
       - removeSlit
-      - eucentricSearch
+      # - eucentricSearch
       - atlas
   targets:
     finders:
