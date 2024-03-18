@@ -9,7 +9,7 @@ from Smartscope.lib.Datatypes.base_plugin import Finder
 from Smartscope.lib.image.target import Target
 from Smartscope.lib.image.targets import Targets
 
-from ptolemy.algorithms import BadMedMagError
+from ..ptolemy.algorithms import BadMedMagError
 from .wrapper import ptolemy_find_holes , load_model
 
 

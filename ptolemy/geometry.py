@@ -1,5 +1,5 @@
 # Contain simple geometry functions
-from ptolemy.PointSet import PointSet2D
+from .PointSet import PointSet2D
 import numpy as np
 from scipy.spatial import ConvexHull
 from scipy.ndimage import rotate

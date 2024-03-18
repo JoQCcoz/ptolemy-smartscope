@@ -1,9 +1,9 @@
 import sys
 # print(sys.path)
 # sys.path.insert(0, '/opt/smartscope/ptolemy/')
-from ptolemy.images import Exposure
-import ptolemy.algorithms as algorithms
-import ptolemy.models as models
+from ..ptolemy.images import Exposure
+from ..ptolemy import algorithms as algorithms
+from ..ptolemy import models as models
 import torch
 from Smartscope.lib.image_manipulations import fourier_crop
 
