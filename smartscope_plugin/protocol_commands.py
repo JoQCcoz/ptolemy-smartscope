@@ -12,7 +12,8 @@ def alignToHolePtolemy(scope,params,instance, content:Dict, *args, **kwargs):
     """
 
     from Smartscope.core.db_manipulations import set_or_update_refined_finder
-    while True:
+    iteration = 0
+    while iteration < 2:
         scope.acquire_medium_mag()
         pixel_size = scope.get_image_settings()
         image, shape_x, shape_y, _, _, pixel_size = scope.buffer_to_numpy()
@@ -23,6 +24,7 @@ def alignToHolePtolemy(scope,params,instance, content:Dict, *args, **kwargs):
         if dist_to_center[closest_index] * pixel_size / 1_000 < 0.8:
             set_or_update_refined_finder(instance.pk,*scope.report_stage())
             break
+        iteration += 1
         scope.align_to_coord(coords_from_center[closest_index])
 
 def createHoleRefPtolemy(scope,params,instance, content:Dict, *args, **kwargs):
