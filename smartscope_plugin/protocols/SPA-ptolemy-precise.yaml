@@ -31,6 +31,8 @@ mediumMag:
     - createHoleRefPtolemy
     - alignToHoleRef
     - mediumMagHole
+    - autoFocus
+    - waitDrift
   targets:
     finders:
       - Ptolemy hole finder
