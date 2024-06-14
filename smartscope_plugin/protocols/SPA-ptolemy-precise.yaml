@@ -27,10 +27,13 @@ square:
 mediumMag:
   acquisition:
     - setFocusPosition
+    - tiltToAngle
     - moveStage
     - createHoleRefPtolemy
     - alignToHoleRef
     - mediumMagHole
+    - autoFocus
+    - waitDrift
   targets:
     finders:
       - Ptolemy hole finder
