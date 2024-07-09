@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-import ptolemy.geometry as geom
-from ptolemy.PointSet import PointSet2D
+from . import geometry as geom
+from .PointSet import PointSet2D
 import matplotlib.pyplot as plt
 
 class CropSet:

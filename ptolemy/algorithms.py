@@ -2,12 +2,12 @@
 import numpy as np
 from scipy.signal import convolve2d
 from scipy.ndimage import label, rotate
-from ptolemy.PointSet import PointSet2D
-from ptolemy.PoissonMixture import PoissonMixture
-import ptolemy.geometry as geom
+from .PointSet import PointSet2D
+from .PoissonMixture import PoissonMixture
+from . import geometry as geom
 from scipy.optimize import minimize_scalar
 import math
-from ptolemy.models import BasicUNet, Wrapper
+from .models import BasicUNet, Wrapper
 import torch
 from scipy.spatial.distance import cdist, euclidean, pdist, squareform 
 from scipy.special import expit

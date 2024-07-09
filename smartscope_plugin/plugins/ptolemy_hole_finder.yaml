@@ -1,2 +1,2 @@
 name: Ptolemy hole finder
-pluginClass: smartscope_plugin.plugin.PtolemyHoleFinder
+pluginClass: ptolemy-smartscope.smartscope_plugin.plugin.PtolemyHoleFinder

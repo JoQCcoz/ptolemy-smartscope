@@ -2,10 +2,10 @@
 from __future__ import absolute_import
 
 import numpy as np
-import ptolemy.mrc as mrc
-from ptolemy.algorithms import flood_segments
+from . import mrc as mrc
+from .algorithms import flood_segments
 import copy
-from ptolemy.CropSet import CropSet
+from .CropSet import CropSet
 import matplotlib
 import matplotlib.pyplot as plt
 

@@ -6,9 +6,10 @@ import torch
 import os
 
 from Smartscope.lib.Datatypes.base_plugin import Finder
-from Smartscope.lib.montage import create_targets_from_center, Target
+from Smartscope.lib.image.target import Target
+from Smartscope.lib.image.targets import Targets
 
-from ptolemy.algorithms import BadMedMagError
+from ..ptolemy.algorithms import BadMedMagError
 from .wrapper import ptolemy_find_holes , load_model
 
 
@@ -28,7 +29,7 @@ class PtolemyHoleFinder(Finder):
         exposure = ptolemy_find_holes(image, model_path=self.kwargs['model_path'],segmenter=self.segmenter,cuda=self.kwargs['cuda'],height=self.kwargs['height'])
         return np.array([exposure.crops.center_coords.y*exposure.scale,exposure.crops.center_coords.x*exposure.scale],dtype=int).transpose() , {'lattice_angle': exposure.rot_ang_deg}      
 
-    def run(self, montage, create_targets_method=create_targets_from_center)-> Tuple[List[Target], bool, Dict]:
+    def run(self, montage, create_targets_method=Targets.create_targets_from_center)-> Tuple[List[Target], bool, Dict]:
         """Where the main logic for the algorithm is"""
         if self.kwargs['preload_weights'] and self.segmenter is None:
             print('loading model on first use')
