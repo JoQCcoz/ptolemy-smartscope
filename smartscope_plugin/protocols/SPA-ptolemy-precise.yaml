@@ -2,6 +2,7 @@ name: SPA-Ptolemy-precise
 atlas:
   acquisition:
       - setAtlasOptics
+      - setAperturesForLowMag
       - resetStage
       - removeSlit
       # - eucentricSearch
@@ -13,10 +14,10 @@ atlas:
       - Size selector
 square:
   acquisition:
+    - setAperturesForLowMag
     - moveStageWithAtlasToSearchOffset
     - realignToSquare
     - eucentricMediumMag
-    - createHoleRefPtolemy
     - square
   targets:
     finders:
@@ -26,6 +27,7 @@ square:
       - Graylevel selector
 mediumMag:
   acquisition:
+    - setAperturesForHighMag
     - setFocusPosition
     - moveStage
     - createHoleRefPtolemy

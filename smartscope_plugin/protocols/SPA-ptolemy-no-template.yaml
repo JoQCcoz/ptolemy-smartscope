@@ -3,9 +3,9 @@ description: This protocol will use ptolemy to the holes instead of a template. 
 atlas:
   acquisition:
       - setAtlasOptics
+      - setAperturesForLowMag
       - resetStage
       - removeSlit
-      # - eucentricSearch
       - atlas
   targets:
     finders:
@@ -14,10 +14,10 @@ atlas:
       - Size selector
 square:
   acquisition:
+    - setAperturesForLowMag
     - moveStageWithAtlasToSearchOffset
     - realignToSquare
     - eucentricMediumMag
-    # - createHoleRefPtolemy
     - square
   targets:
     finders:
@@ -27,9 +27,9 @@ square:
       - Graylevel selector
 mediumMag:
   acquisition:
+    - setAperturesForHighMag
     - setFocusPosition
     - moveStage
-    # - createHoleRefPtolemy
     - alignToHolePtolemy
     - mediumMagHole
     - autoFocus
