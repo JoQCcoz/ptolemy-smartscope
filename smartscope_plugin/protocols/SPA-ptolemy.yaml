@@ -31,8 +31,8 @@ mediumMag:
     - setFocusPosition
     - tiltToAngle
     - moveStage
-    - createHoleRefPtolemy
-    - alignToHoleRef
+    # - createHoleRefPtolemy
+    # - alignToHoleRef
     - mediumMagHole
     - autoFocusAfterDistance
     - waitDrift
