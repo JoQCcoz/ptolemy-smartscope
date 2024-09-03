@@ -8,6 +8,7 @@ import os
 from Smartscope.lib.Datatypes.base_plugin import Finder
 from Smartscope.lib.image.target import Target
 from Smartscope.lib.image.targets import Targets
+from Smartscope.core.settings.worker import FORCE_MDOC_TARGETING
 
 from ..ptolemy.algorithms import BadMedMagError
 from .wrapper import ptolemy_find_holes , load_model
@@ -36,7 +37,7 @@ class PtolemyHoleFinder(Finder):
             self.segmenter = load_model(self.kwargs['model_path'], self.kwargs['cuda'])
         try:
             ptolemy_image_coords, additional_outputs = self.find_holes(montage.image)
-            targets = create_targets_method(ptolemy_image_coords,montage)
+            targets = create_targets_method(ptolemy_image_coords,montage,force_mdoc=FORCE_MDOC_TARGETING)
             success = True
         except BadMedMagError as err:
             print(f'Could not find holes. {err}')
