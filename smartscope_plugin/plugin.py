@@ -29,14 +29,14 @@ class PtolemyHoleFinder(Finder):
         exposure = ptolemy_find_holes(image, model_path=self.kwargs['model_path'],segmenter=self.segmenter,cuda=self.kwargs['cuda'],height=self.kwargs['height'])
         return np.array([exposure.crops.center_coords.y*exposure.scale,exposure.crops.center_coords.x*exposure.scale],dtype=int).transpose() , {'lattice_angle': exposure.rot_ang_deg}      
 
-    def run(self, montage, create_targets_method=Targets.create_targets_from_center)-> Tuple[List[Target], bool, Dict]:
+    def run(self, montage, create_targets_method=Targets.create_targets_from_center, force_mdoc=False)-> Tuple[List[Target], bool, Dict]:
         """Where the main logic for the algorithm is"""
         if self.kwargs['preload_weights'] and self.segmenter is None:
             print('loading model on first use')
             self.segmenter = load_model(self.kwargs['model_path'], self.kwargs['cuda'])
         try:
             ptolemy_image_coords, additional_outputs = self.find_holes(montage.image)
-            targets = create_targets_method(ptolemy_image_coords,montage)
+            targets = create_targets_method(ptolemy_image_coords,montage,force_mdoc=force_mdoc)
             success = True
         except BadMedMagError as err:
             print(f'Could not find holes. {err}')
