@@ -25,6 +25,7 @@ square:
       - Regular pattern
     selectors:
       - Graylevel selector
+      - Distance from center selector
 mediumMag:
   acquisition:
     - setAperturesForHighMag
